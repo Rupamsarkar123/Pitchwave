@@ -11,6 +11,8 @@ import Profile from "./components/Profile";
 import YourPosts from "./components/YourPosts";
 import AboutUs from "./components/AboutUs";
 import Footer from "./components/Footer";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
   const isAuthenticated = false; // Login check
@@ -33,6 +35,13 @@ function App() {
             path="/your-posts"
             element={isAuthenticated ? <YourPosts /> : <Navigate to="/" />}
           />
+          <Route
+            path="/signup" element={<Signup/>} 
+          />
+          <Route
+            path="/login" element={<Login/>}
+          />
+          
         </Routes>
       </main>
       <Footer />

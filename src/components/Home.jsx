@@ -2,6 +2,7 @@ import React from "react";
 
 const Home = () => {
   const containerStyle = {
+    margin:"30px",
     display: "flex",
     justifyContent: "space-around",
     padding: "20px",

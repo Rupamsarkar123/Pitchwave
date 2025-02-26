@@ -6,71 +6,116 @@ const Navbar = ({ isLoggedIn }) => {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "15px",
-    backgroundColor: "#2C3E50",
-    color: "white",
+    padding: "10px 20px",
+    backgroundColor: "#1F2937", // Dark grey-blue
+    color: "#F3F4F6", // Light grey
     fontSize: "18px",
-    borderRadius: "4px",
-    height: "35px",
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+    position: "fixed",
     top: "0",
-    left: "0",
+    left:"0",
     width: "100%",
     zIndex: "1000",
+    margin:"0",
+  };
+
+  const linkContainerStyle = {
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
   };
 
   const linkStyle = {
-    margin: "0 15px",
     textDecoration: "none",
-    color: "white",
-    cursor: "pointer",
+    color: "#F3F4F6",
+    padding: "8px 12px",
+    borderRadius: "5px",
+    transition: "background-color 0.3s, color 0.3s",
+    fontWeight: "500",
+  };
+
+  const linkHoverStyle = {
+    backgroundColor: "#374151", // Slightly darker grey
+    color: "#E5E7EB", // Softer white
   };
 
   const buttonStyle = {
-    padding: "8px 15px",
+    padding: "8px 8px 8px 8px",
     borderRadius: "5px",
     textDecoration: "none",
     color: "white",
     fontWeight: "bold",
     transition: "0.3s",
     marginLeft: "10px",
+    border: "none",
+    cursor: "pointer",
+    
   };
 
   const loginStyle = {
     ...buttonStyle,
-    backgroundColor: "#E74C3C", // Blue for login
+    backgroundColor: "#3B82F6", // Blue for login
   };
 
   const signupStyle = {
+    margin:"35px",
     ...buttonStyle,
-    backgroundColor: "#E74C3C", // Red for signup
+    backgroundColor: "#EF4444", // Red for signup
   };
 
-  const hoverEffect = (e, color) => {
-    e.target.style.backgroundColor = color;
+  const hoverEffect = (e, styles) => {
+    Object.assign(e.target.style, styles);
   };
 
   return (
     <nav style={navStyle}>
-      <div style={{ fontWeight: "bold", fontSize: "22px" }}>Pitchwave</div>
-      <div>
-        <Link to="/" style={linkStyle}>
+      <div style={{ fontWeight: "bold", fontSize: "24px", color: "white" }}>
+        Pitchwave
+      </div>
+      <div style={linkContainerStyle}>
+        <Link
+          to="/"
+          style={linkStyle}
+          onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+          onMouseOut={(e) => hoverEffect(e, linkStyle)}
+        >
           Home
         </Link>
-        <Link to="/about" style={linkStyle}>
+        <Link
+          to="/about"
+          style={linkStyle}
+          onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+          onMouseOut={(e) => hoverEffect(e, linkStyle)}
+        >
           About Us
         </Link>
         {isLoggedIn && (
-          <Link to="/your-posts" style={linkStyle}>
+          <Link
+            to="/your-posts"
+            style={linkStyle}
+            onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+            onMouseOut={(e) => hoverEffect(e, linkStyle)}
+          >
             Your Posts
           </Link>
         )}
-        <Link to="/chats" style={linkStyle}>
+        <Link
+          to="/chats"
+          style={linkStyle}
+          onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+          onMouseOut={(e) => hoverEffect(e, linkStyle)}
+        >
           Chats
         </Link>
       </div>
       <div>
         {isLoggedIn ? (
-          <Link to="/profile" style={linkStyle}>
+          <Link
+            to="/profile"
+            style={linkStyle}
+            onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+            onMouseOut={(e) => hoverEffect(e, linkStyle)}
+          >
             My Profile
           </Link>
         ) : (
@@ -78,16 +123,16 @@ const Navbar = ({ isLoggedIn }) => {
             <Link
               to="/login"
               style={loginStyle}
-              onMouseOver={(e) => hoverEffect(e, "#2980B9")}
-              onMouseOut={(e) => hoverEffect(e, "#3498DB")}
+              onMouseOver={(e) => hoverEffect(e, { backgroundColor: "#2563EB" })}
+              onMouseOut={(e) => hoverEffect(e, loginStyle)}
             >
               Login
             </Link>
             <Link
               to="/signup"
               style={signupStyle}
-              onMouseOver={(e) => hoverEffect(e, "#2980B9")}
-              onMouseOut={(e) => hoverEffect(e, "#3498DB")}
+              onMouseOver={(e) => hoverEffect(e, { backgroundColor: "#DC2626" })}
+              onMouseOut={(e) => hoverEffect(e, signupStyle)}
             >
               Signup
             </Link>

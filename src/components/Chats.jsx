@@ -8,7 +8,7 @@ const Chats = () => {
     justifyContent: "center",
     height: "60vh", // Reduced height to move it up
     textAlign: "center",
-    marginTop: "-90px", // Moves the chat section up
+    marginTop: "30px", // Moves the chat section up
   };
 
   const chatBoxStyle = {
@@ -22,11 +22,11 @@ const Chats = () => {
 
   const chatStyle = {
     padding: "10px",
-    margin: "8px 0",
+    margin: "8px",
     backgroundColor: "#ffffff",
     borderRadius: "5px",
     boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
-    width: "100%",
+    width: "91%",
   };
 
   return (
