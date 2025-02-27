@@ -13,6 +13,7 @@ import AboutUs from "./components/AboutUs";
 import Footer from "./components/Footer";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Chatfront from "./components/chatfront";
 
 function App() {
   const isAuthenticated = false; // Login check
@@ -26,7 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/chats" element={<Chats />} />
+          <Route path="/chats" element={<Chatfront />} />
           <Route
             path="/profile"
             element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
