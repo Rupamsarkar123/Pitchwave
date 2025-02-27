@@ -93,73 +93,33 @@ const Signup = () => {
 
   // Styles
   const formContainerStyle = {
-    padding: "20px",
-    maxWidth: "500px",
+    padding: "40PX",
+    maxWidth: "400px",
+    width: "100%",
     margin: "100px auto",
     border: "1px solid #ddd",
     borderRadius: "8px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: "#fff",
+    textAlign: "center",
+    link: {
+        color: "#E74C3C",
+        textDecoration: "none",
+      },
   };
 
   const inputStyle = {
-    width: "95.5%",
+    width: "95%",
     padding: "10px",
     margin: "10px 0",
     border: "1px solid #ccc",
     borderRadius: "4px",
   };
 
-<<<<<<< HEAD
-    const formContainerStyle = {
-        padding: '40px',
-        maxWidth: '400px',
-        margin: '100px auto',
-        border: '1px solid #ddd',
-        borderRadius: '8px',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        backgroundColor: '#fff',
-        textAlign: 'center'
-    };
-
-    const inputStyle = {
-        width: '100%',
-        padding: '10px',
-        margin: '10px 0',
-        border: '1px solid #ccc',
-        borderRadius: '4px'
-    };
-
-    const buttonStyle = {
-        width: '100%',
-        padding: '10px',
-        backgroundColor: '#3498DB',
-        border: 'none',
-        color: 'white',
-        fontWeight: 'bold',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s',
-        marginTop: '10px'
-    };
-
-    return (
-        <div style={formContainerStyle}>
-            <h2 style={{ marginBottom: '10px' }}>Sign Up</h2>
-            <p>Already have an account? <a href="/login" style={{ color: '#E74C3C', textDecoration: 'none' }}>Login now</a></p>
-            <form onSubmit={handleSubmit}>
-                <input name="name" type="text" placeholder="Enter Name" required onChange={handleChange} style={inputStyle} /><br />
-                <input name="email" type="email" placeholder="Enter Email Address" required onChange={handleChange} style={inputStyle} /><br />
-                <input name="password" type="password" placeholder="Enter Password" required onChange={handleChange} style={inputStyle} /><br />
-                <button type="submit" style={buttonStyle}>Signup</button>
-            </form>
-        </div>
-    );
-=======
   const buttonStyle = {
     width: "100%",
     padding: "10px",
-    backgroundColor: "#3498DB",
+    backgroundColor: "#E74C3C",
     border: "none",
     color: "white",
     fontWeight: "bold",
@@ -170,16 +130,21 @@ const Signup = () => {
   };
 
   const handleMouseOver = (e) => {
-    e.target.style.backgroundColor = "#2980B9";
+    e.target.style.backgroundColor = "#E74C3C";
   };
 
   const handleMouseOut = (e) => {
-    e.target.style.backgroundColor = "#3498DB";
+    e.target.style.backgroundColor = "#E74C3C";
   };
 
   return (
     <div style={formContainerStyle}>
-      <h2 style={{ textAlign: "center" }}>Signup Form</h2>
+      <Toaster />
+      <h2 style={{ textAlign: "center" }}>Sign Up</h2>
+      <h3 style={formContainerStyle.subtitle}>
+        Already have an Account ?{''}
+        <a href="/Login" style={formContainerStyle.link}> Login </a>
+      </h3>
       <form onSubmit={handleSubmit}>
         <input
           name="name"
@@ -267,7 +232,6 @@ const Signup = () => {
       </form>
     </div>
   );
->>>>>>> 89a903ce33bcfdc575851611e158acf111287421
 };
 
 export default Signup;
