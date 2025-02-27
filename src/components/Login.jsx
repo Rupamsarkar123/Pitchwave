@@ -28,7 +28,9 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success("Login successful!");
-        localStorage.setItem("token", data.token);
+
+        // localStorage.setItem("user", JSON.stringify(data.user)); // Store user
+        window.location.href = "/profile"; // Redirect to profile
         console.log("User logged in:", data);
       } else {
         toast.error(data.message || "Invalid email or password.");
@@ -43,7 +45,7 @@ const Login = () => {
 
   return (
     <div style={styles.container}>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <h2 style={styles.title}>Login</h2>
       <form onSubmit={handleSubmit}>
         <input

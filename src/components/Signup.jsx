@@ -133,6 +133,7 @@ const Signup = () => {
 
   return (
     <div style={formContainerStyle}>
+      <Toaster position="top-center" reverseOrder={false} />
       <h2 style={{ textAlign: "center" }}>Signup Form</h2>
       <form onSubmit={handleSubmit}>
         <input
