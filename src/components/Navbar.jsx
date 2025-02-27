@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const Navbar = ({ isLoggedIn }) => {
   const navStyle = {
     display: "flex",
@@ -54,7 +55,7 @@ const Navbar = ({ isLoggedIn }) => {
 
   const loginStyle = {
     ...buttonStyle,
-    backgroundColor: "#3B82F6", // Blue for login
+    backgroundColor: "#EF4444", // Red for login
   };
 
   const signupStyle = {
@@ -77,8 +78,7 @@ const Navbar = ({ isLoggedIn }) => {
           to="/"
           style={linkStyle}
           onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
-          onMouseOut={(e) => hoverEffect(e, linkStyle)}
-        >
+          onMouseOut={(e) => hoverEffect(e, linkStyle)}>
           Home
         </Link>
         <Link
