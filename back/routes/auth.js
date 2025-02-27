@@ -2,8 +2,10 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
-import User from "../models/User.js";
+import multer from "multer";
+import path from "path";
 import dotenv from "dotenv";
+import User from "../models/User.js";
 
 dotenv.config();
 
@@ -34,10 +36,23 @@ const sendEmail = async (to, subject, text) => {
   }
 };
 
-// **Signup Route**
-router.post("/signup", async (req, res) => {
+// 🖼️ Multer Storage Configuration for Profile Picture Upload
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Store files in 'uploads' folder
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}${path.extname(file.originalname)}`); // Unique file name
+  },
+});
+
+const upload = multer({ storage });
+
+// **Signup Route with Profile Picture Upload**
+router.post("/signup", upload.single("profilePic"), async (req, res) => {
   try {
-    const { name, email, password, domain, occupation, profilePic } = req.body;
+    const { name, email, password, domain, occupation } = req.body;
+    const profilePic = req.file ? `/uploads/${req.file.filename}` : ""; // File URL
 
     // Check if user already exists
     let user = await User.findOne({ email });
@@ -56,14 +71,16 @@ router.post("/signup", async (req, res) => {
     });
     await user.save();
 
-    // 📩 Send Welcome Email via Nodemailer
+    // 📩 Send Welcome Email
     await sendEmail(
       email,
       "Welcome to Pitchwave! 🚀",
       `Hi ${name},\n\nAt Pitchwave, we are dedicated to providing a seamless and powerful platform to connect entrepreneurs with investors.\n\n✅ Showcase your startup and attract investors.\n✅ Get resources & insights to refine your pitch.\n✅ Join a community of innovators and experts.\n\nWe can’t wait to see the impact you’ll create! If you need assistance, reach out to our support team.\n\nBest Regards,\nThe Pitchwave Team`
     );
 
-    res.status(201).json({ message: "User registered successfully" });
+    res
+      .status(201)
+      .json({ message: "User registered successfully", profilePic });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
