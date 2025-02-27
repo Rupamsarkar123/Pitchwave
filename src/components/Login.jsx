@@ -11,8 +11,8 @@ const Login = () => {
 
     const formContainerStyle = {
         padding: '20px',
-        maxWidth: '300px',
-        margin: '200px auto',
+        maxWidth: '400px',
+        margin: '100px auto',
         border: '1px solid #ddd',
         borderRadius: '8px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
@@ -20,9 +20,9 @@ const Login = () => {
     };
 
     const inputStyle = {
-        width: '93%',
+        width: '95.5%',
         padding: '10px',
-        marginTop:'10px',
+        margin: '10px 0',
         border: '1px solid #ccc',
         borderRadius: '4px',
     };
@@ -30,7 +30,7 @@ const Login = () => {
     const buttonStyle = {
         width: '100%',
         padding: '10px',
-        backgroundColor: '#3498DB',
+        backgroundColor: '#E74C3C',
         border: 'none',
         color: 'white',
         fontWeight: 'bold',
@@ -41,20 +41,26 @@ const Login = () => {
     };
 
     const handleMouseOver = (e) => {
-        e.target.style.backgroundColor = '#2980B9';
+        e.target.style.backgroundColor = '#C0392B';
     };
 
     const handleMouseOut = (e) => {
-        e.target.style.backgroundColor = '#3498DB';
+        e.target.style.backgroundColor = '#E74C3C';
     };
 
     return (
         <div style={formContainerStyle}>
-            <h2 style={{ textAlign: 'center' }}>Login Form</h2>
+            <h2 style={{ textAlign: 'center' }}>Login</h2>
+            <h3 style={{ textAlign: 'center'}}>
+                Don't have an account?{' '}
+                <a href="/Signup" style={{ color: '#E74C3C', textDecoration: 'none' }}>
+                    Create a free account
+                </a>
+            </h3>
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
-                    placeholder="Email"
+                    placeholder="Enter username"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -62,12 +68,17 @@ const Login = () => {
                 />
                 <input
                     type="password"
-                    placeholder="Password"
+                    placeholder="Enter Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                     style={inputStyle}
                 />
+                <p style={{ textAlign: 'right' }}>
+                    <a href="/forgot-password" style={{ color: '#E74C3C', textDecoration: 'none' }}>
+                        Forgot password?
+                    </a>
+                </p>
                 <button
                     type="submit"
                     style={buttonStyle}

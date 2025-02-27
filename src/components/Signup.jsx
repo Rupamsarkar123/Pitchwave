@@ -43,23 +43,23 @@ const Signup = () => {
         console.log(formData);
     };
 
-    // Styles
     const formContainerStyle = {
-        padding: '20px',
-        maxWidth: '500px',
+        padding: '40px',
+        maxWidth: '400px',
         margin: '100px auto',
         border: '1px solid #ddd',
         borderRadius: '8px',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         backgroundColor: '#fff',
+        textAlign: 'center'
     };
 
     const inputStyle = {
-        width: '95.5%',
+        width: '100%',
         padding: '10px',
         margin: '10px 0',
         border: '1px solid #ccc',
-        borderRadius: '4px',
+        borderRadius: '4px'
     };
 
     const buttonStyle = {
@@ -72,104 +72,18 @@ const Signup = () => {
         borderRadius: '4px',
         cursor: 'pointer',
         transition: 'background-color 0.3s',
-        marginTop: '10px',
-    };
-
-    const handleMouseOver = (e) => {
-        e.target.style.backgroundColor = '#2980B9';
-    };
-
-    const handleMouseOut = (e) => {
-        e.target.style.backgroundColor = '#3498DB';
+        marginTop: '10px'
     };
 
     return (
         <div style={formContainerStyle}>
-            <h2 style={{ textAlign: 'center' }}>Signup Form</h2>
+            <h2 style={{ marginBottom: '10px' }}>Sign Up</h2>
+            <p>Already have an account? <a href="/login" style={{ color: '#E74C3C', textDecoration: 'none' }}>Login now</a></p>
             <form onSubmit={handleSubmit}>
-                <input
-                    name="name"
-                    type="text"
-                    placeholder="Name"
-                    required
-                    onChange={handleChange}
-                    style={inputStyle}
-                />
-                <input
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    required
-                    onChange={handleChange}
-                    style={inputStyle}
-                />
-                <input
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    required
-                    onChange={handleChange}
-                    style={inputStyle}
-                />
-                <select
-                    name="domain"
-                    required
-                    onChange={handleChange}
-                    style={inputStyle}
-                >
-                    <option value="">Select Domain</option>
-                    {domains.map((domain, idx) => (
-                        <option key={idx} value={domain}>
-                            {domain}
-                        </option>
-                    ))}
-                </select>
-                {formData.domain === 'Custom (Others)' && (
-                    <input
-                        name="customDomain"
-                        type="text"
-                        placeholder="Specify Custom Domain"
-                        onChange={handleChange}
-                        style={inputStyle}
-                    />
-                )}
-                <select
-                    name="occupation"
-                    required
-                    onChange={handleChange}
-                    style={inputStyle}
-                >
-                    <option value="">Select Occupation</option>
-                    {occupations.map((occupation, idx) => (
-                        <option key={idx} value={occupation}>
-                            {occupation}
-                        </option>
-                    ))}
-                </select>
-                {formData.occupation === 'Custom (Others)' && (
-                    <input
-                        name="customOccupation"
-                        type="text"
-                        placeholder="Specify Custom Occupation"
-                        onChange={handleChange}
-                        style={inputStyle}
-                    />
-                )}
-                <input
-                    name="profilePic"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleChange}
-                    style={inputStyle}
-                />
-                <button
-                    type="submit"
-                    style={buttonStyle}
-                    onMouseOver={handleMouseOver}
-                    onMouseOut={handleMouseOut}
-                >
-                    Signup
-                </button>
+                <input name="name" type="text" placeholder="Enter Name" required onChange={handleChange} style={inputStyle} /><br />
+                <input name="email" type="email" placeholder="Enter Email Address" required onChange={handleChange} style={inputStyle} /><br />
+                <input name="password" type="password" placeholder="Enter Password" required onChange={handleChange} style={inputStyle} /><br />
+                <button type="submit" style={buttonStyle}>Signup</button>
             </form>
         </div>
     );
