@@ -1,9 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+<<<<<<< HEAD
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+=======
+
+const Navbar = ({ isLoggedIn }) => {
+  const navStyle = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "10px 20px",
+    backgroundColor: "#1F2937", // Dark grey-blue
+    color: "#F3F4F6", // Light grey
+    fontSize: "18px",
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+    position: "fixed",
+    top: "0",
+    left:"0",
+    width: "100%",
+    zIndex: "1000",
+    margin:"0",
+  };
+
+  const linkContainerStyle = {
+    display: "flex",
+    alignItems: "center",
+    gap: "15px",
+  };
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "#F3F4F6",
+    padding: "8px 12px",
+    borderRadius: "5px",
+    transition: "background-color 0.3s, color 0.3s",
+    fontWeight: "500",
+  };
+>>>>>>> eb185c332b6414d8d02d0ede720131ffbf5fce62
 
   useEffect(() => {
     setIsLoggedIn(!!localStorage.getItem("user"));
@@ -14,6 +50,7 @@ const Navbar = () => {
     setIsLoggedIn(false);
     navigate("/"); // Redirect to home after logout
   };
+<<<<<<< HEAD
   const styles = {
     nav: {
       display: "flex",
@@ -72,6 +109,12 @@ const Navbar = () => {
       fontSize: "24px",
       color: "white",
     },
+=======
+
+  const loginStyle = {
+    ...buttonStyle,
+    backgroundColor: "#EF4444", // Red for login
+>>>>>>> eb185c332b6414d8d02d0ede720131ffbf5fce62
   };
 
   const applyHoverEffect = (e, styles) => {
@@ -79,6 +122,7 @@ const Navbar = () => {
   };
 
   return (
+<<<<<<< HEAD
     <nav style={styles.nav}>
       <div style={styles.title}>Pitchwave</div>
       <div style={styles.linkContainer}>
@@ -95,6 +139,37 @@ const Navbar = () => {
                 "Home"}
             </Link>
           )
+=======
+    <nav style={navStyle}>
+      <div style={{ fontWeight: "bold", fontSize: "24px", color: "white" }}>
+        Pitchwave
+      </div>
+      <div style={linkContainerStyle}>
+        <Link
+          to="/"
+          style={linkStyle}
+          onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+          onMouseOut={(e) => hoverEffect(e, linkStyle)}>
+          Home
+        </Link>
+        <Link
+          to="/about"
+          style={linkStyle}
+          onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+          onMouseOut={(e) => hoverEffect(e, linkStyle)}
+        >
+          About Us
+        </Link>
+        {isLoggedIn && (
+          <Link
+            to="/your-posts"
+            style={linkStyle}
+            onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+            onMouseOut={(e) => hoverEffect(e, linkStyle)}
+          >
+            Your Posts
+          </Link>
+>>>>>>> eb185c332b6414d8d02d0ede720131ffbf5fce62
         )}
       </div>
       <div>

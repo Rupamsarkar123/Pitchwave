@@ -7,7 +7,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Check if the user is already logged in
     const token = localStorage.getItem("token");
     if (token) {
       toast.success("Already logged in!");
@@ -47,10 +46,14 @@ const Login = () => {
     <div style={styles.container}>
       <Toaster position="top-center" reverseOrder={false} />
       <h2 style={styles.title}>Login</h2>
+      <h3 style={styles.subtitle}>
+        Don't have an account?{' '}
+        <a href="/Signup" style={styles.link}>Create a free account</a>
+      </h3>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Enter username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -58,17 +61,20 @@ const Login = () => {
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           style={styles.input}
         />
+        <p style={{ textAlign: 'right' }}>
+          <a href="/forgot-password" style={styles.link}>Forgot password?</a>
+        </p>
         <button
           type="submit"
           style={{
             ...styles.button,
-            backgroundColor: loading ? "#95a5a6" : "#3498DB",
+            backgroundColor: loading ? "#95a5a6" : "#E74C3C",
           }}
           disabled={loading}
         >
@@ -82,7 +88,7 @@ const Login = () => {
 const styles = {
   container: {
     padding: "20px",
-    maxWidth: "350px",
+    maxWidth:"400px",
     margin: "100px auto",
     border: "1px solid #ddd",
     borderRadius: "8px",
@@ -91,15 +97,21 @@ const styles = {
     textAlign: "center",
   },
   title: {
-    textAlign: "center",
+    marginBottom: "10px",
+  },
+  subtitle: {
     marginBottom: "20px",
   },
   input: {
-    width: "92%",
+    width: "95.5%",
     padding: "10px",
     margin: "10px 0",
     border: "1px solid #ccc",
     borderRadius: "4px",
+  },
+  link: {
+    color: "#E74C3C",
+    textDecoration: "none",
   },
   button: {
     width: "100%",

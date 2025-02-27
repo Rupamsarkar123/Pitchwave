@@ -93,17 +93,23 @@ const Signup = () => {
 
   // Styles
   const formContainerStyle = {
-    padding: "20px",
-    maxWidth: "500px",
+    padding: "40PX",
+    maxWidth: "400px",
+    width: "100%",
     margin: "100px auto",
     border: "1px solid #ddd",
     borderRadius: "8px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     backgroundColor: "#fff",
+    textAlign: "center",
+    link: {
+      color: "#E74C3C",
+      textDecoration: "none",
+    },
   };
 
   const inputStyle = {
-    width: "95.5%",
+    width: "95%",
     padding: "10px",
     margin: "10px 0",
     border: "1px solid #ccc",
@@ -113,7 +119,7 @@ const Signup = () => {
   const buttonStyle = {
     width: "100%",
     padding: "10px",
-    backgroundColor: "#3498DB",
+    backgroundColor: "#E74C3C",
     border: "none",
     color: "white",
     fontWeight: "bold",
@@ -124,16 +130,15 @@ const Signup = () => {
   };
 
   const handleMouseOver = (e) => {
-    e.target.style.backgroundColor = "#2980B9";
+    e.target.style.backgroundColor = "#E74C3C";
   };
 
   const handleMouseOut = (e) => {
-    e.target.style.backgroundColor = "#3498DB";
+    e.target.style.backgroundColor = "#E74C3C";
   };
 
   return (
     <div style={formContainerStyle}>
-      <Toaster position="top-center" reverseOrder={false} />
       <h2 style={{ textAlign: "center" }}>Signup Form</h2>
       <form onSubmit={handleSubmit}>
         <input
