@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -9,9 +9,10 @@ const Login = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
+      setIsLoggedIn(true);
       toast.success("Already logged in!");
     }
-  }, []);
+  }, [setIsLoggedIn]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,8 +28,8 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success("Login successful!");
-
-        // localStorage.setItem("user", JSON.stringify(data.user)); // Store user
+        localStorage.setItem("token", data.token); // Store token
+        setIsLoggedIn(true);
         window.location.href = "/profile"; // Redirect to profile
         console.log("User logged in:", data);
       } else {
@@ -47,8 +48,10 @@ const Login = () => {
       <Toaster position="top-center" reverseOrder={false} />
       <h2 style={styles.title}>Login</h2>
       <h3 style={styles.subtitle}>
-        Don't have an account?{' '}
-        <a href="/Signup" style={styles.link}>Create a free account</a>
+        Don't have an account?{" "}
+        <a href="/Signup" style={styles.link}>
+          Create a free account
+        </a>
       </h3>
       <form onSubmit={handleSubmit}>
         <input
@@ -67,8 +70,10 @@ const Login = () => {
           required
           style={styles.input}
         />
-        <p style={{ textAlign: 'right' }}>
-          <a href="/forgot-password" style={styles.link}>Forgot password?</a>
+        <p style={{ textAlign: "right" }}>
+          <a href="/forgot-password" style={styles.link}>
+            Forgot password?
+          </a>
         </p>
         <button
           type="submit"
@@ -88,7 +93,7 @@ const Login = () => {
 const styles = {
   container: {
     padding: "20px",
-    maxWidth:"400px",
+    maxWidth: "400px",
     margin: "100px auto",
     border: "1px solid #ddd",
     borderRadius: "8px",

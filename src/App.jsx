@@ -4,6 +4,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Chats from "./components/Chats";
@@ -16,13 +17,12 @@ import Login from "./components/Login";
 import Chatfront from "./components/chatfront";
 
 function App() {
-  const isAuthenticated = false; // Login check
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <Router>
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} />
       <main style={{ marginBottom: "60px" }}>
-        {" "}
         {/* Adds space for footer */}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -30,19 +30,20 @@ function App() {
           <Route path="/chats" element={<Chatfront />} />
           <Route
             path="/profile"
-            element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
+            element={isLoggedIn ? <Profile /> : <Navigate to="/" />}
           />
           <Route
             path="/your-posts"
-            element={isAuthenticated ? <YourPosts /> : <Navigate to="/" />}
+            element={isLoggedIn ? <YourPosts /> : <Navigate to="/" />}
           />
           <Route
-            path="/signup" element={<Signup/>} 
+            path="/signup"
+            element={<Signup setIsLoggedIn={setIsLoggedIn} />}
           />
           <Route
-            path="/login" element={<Login/>}
+            path="/login"
+            element={<Login setIsLoggedIn={setIsLoggedIn} />}
           />
-          
         </Routes>
       </main>
       <Footer />

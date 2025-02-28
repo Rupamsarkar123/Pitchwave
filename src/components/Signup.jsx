@@ -44,7 +44,7 @@ const occupations = [
   "Custom (Others)",
 ];
 
-const Signup = () => {
+const Signup = ({ setIsLoggedIn }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -82,6 +82,7 @@ const Signup = () => {
       if (response.ok) {
         toast.success("Signup successful!");
         console.log("User registered:", data);
+        setIsLoggedIn(true); // Set isLoggedIn to true upon successful signup
       } else {
         toast.error(data.message || "Signup failed.");
       }
@@ -139,6 +140,8 @@ const Signup = () => {
 
   return (
     <div style={formContainerStyle}>
+      <Toaster position="top-center" reverseOrder={false} />
+
       <h2 style={{ textAlign: "center" }}>Signup Form</h2>
       <form onSubmit={handleSubmit}>
         <input
