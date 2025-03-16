@@ -1,4 +1,4 @@
-# Pitch# Pitchwave
+# Pitchwave
 
 Pitchwave is a startup-investor pitching platform that connects entrepreneurs with potential investors. It provides a streamlined interface for startups to showcase their ideas and receive funding opportunities.
 
