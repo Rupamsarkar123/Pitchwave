@@ -1,28 +1,20 @@
-# Pitchwave
+# Pitch# Pitchwave
 
 Pitchwave is a startup-investor pitching platform that connects entrepreneurs with potential investors. It provides a streamlined interface for startups to showcase their ideas and receive funding opportunities.
 
-##🚀 Tech Stack
+## 🚀 Tech Stack
 
-  ###Frontend:
+### Frontend:
+- React.js (Vite)
+- TailwindCSS
+- React Router
 
--React.js (Vite)
-
--TailwindCSS
-
--React Router
-
-###Backend:
-
--Node.js
-
--Express.js
-
--MongoDB (Mongoose)
-
--Nodemailer (SMTP for email services)
-
--Multer (for file uploads)
+### Backend:
+- Node.js
+- Express.js
+- MongoDB (Mongoose)
+- Nodemailer (SMTP for email services)
+- Multer (for file uploads)
 
 ## Features
 
@@ -32,25 +24,15 @@ Pitchwave is a startup-investor pitching platform that connects entrepreneurs wi
 - **Chat System**: Real-time chat between startups and investors.
 - **Email Notifications**: Using SMTP and Nodemailer to send automated emails.
 - **File Uploads**: Multer is used for handling profile pictures and pitch documents.
+- **Ask ChatAI**: Integrated AI assistant to provide startup-related guidance and insights.
 
-  ## Screenshots
-![Screenshot 1](![Screenshot (633)](![Screenshot (663)](https://github.com/user-attachments/assets/36def5f0-b008-4063-bbf0-83eb91e3eb33)
-)
-![Screenshot 2](![Screenshot (669)](https://github.com/user-attachments/assets/38ecb936-93f8-4deb-9a94-60e6e4bf47f9)
-)
-)
-)
-![Screenshot 3]((![Screenshot (665)](https://github.com/user-attachments/assets/dd926a67-6a80-4805-8d5e-ca5079e8116c)
-)
-)
-![Screenshot 4](![Screenshot (653)](![Screenshot (658)](![Screenshot (667)](![Screenshot (667)](https://github.com/user-attachments/assets/ce0f5d64-5048-44c0-a888-7e8b9521a267)
-)
-)
+## Screenshots
 
-)
-![Screenshot 5](![Screenshot (654)](![Screenshot (668)](https://github.com/user-attachments/assets/f8c89950-8ec1-4da5-903b-270fab9724ff)
-)
-)
+![Screenshot 1](https://github.com/user-attachments/assets/36def5f0-b008-4063-bbf0-83eb91e3eb33)
+![Screenshot 2](https://github.com/user-attachments/assets/38ecb936-93f8-4deb-9a94-60e6e4bf47f9)
+![Screenshot 3](https://github.com/user-attachments/assets/dd926a67-6a80-4805-8d5e-ca5079e8116c)
+![Screenshot 4](https://github.com/user-attachments/assets/ce0f5d64-5048-44c0-a888-7e8b9521a267)
+![Screenshot 5](https://github.com/user-attachments/assets/f8c89950-8ec1-4da5-903b-270fab9724ff)
 
 ## Installation
 
@@ -84,10 +66,11 @@ Pitchwave is a startup-investor pitching platform that connects entrepreneurs wi
    npm run dev
    ```
 
-
 ## Contributing
 
 Contributions are welcome! Feel free to fork this repo and submit pull requests.
+
+
 
 
 
