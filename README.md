@@ -30,7 +30,9 @@ Pitchwave is a startup-investor pitching platform that connects entrepreneurs wi
 
 ![Screenshot 1](https://github.com/user-attachments/assets/36def5f0-b008-4063-bbf0-83eb91e3eb33)
 ![Screenshot 2](https://github.com/user-attachments/assets/38ecb936-93f8-4deb-9a94-60e6e4bf47f9)
-![Screenshot 3](https://github.com/user-attachments/assets/dd926a67-6a80-4805-8d5e-ca5079e8116c)
+![Screenshot 3](https://github.com/user-attachments/assets/d0a6af29-41b5-453c-8b6b-9d3880dda404)
+![Screenshot 4](https://github.com/user-attachments/assets/c7086750-5056-4dd8-9b2a-1f70e9ca280a)
+![Screenshot 4](https://github.com/user-attachments/assets/05aff401-922c-4746-8407-713ddd47f189)
 ![Screenshot 4](https://github.com/user-attachments/assets/ce0f5d64-5048-44c0-a888-7e8b9521a267)
 ![Screenshot 5](https://github.com/user-attachments/assets/f8c89950-8ec1-4da5-903b-270fab9724ff)
 
