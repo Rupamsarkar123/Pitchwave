@@ -1,7 +1,37 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Navbar = ({ isLoggedIn }) => {
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkUser = () => {
+      const user = localStorage.getItem("user");
+      setIsLoggedIn(!!user);
+    };
+
+    checkUser();
+
+    // Listen for changes in localStorage (if another tab logs out)
+    window.addEventListener("storage", checkUser);
+    return () => {
+      window.removeEventListener("storage", checkUser);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    toast.success("Logout successful!");
+
+    setTimeout(() => {
+      navigate("/login");
+    }, 1500); // Allow time for toast to be visible
+  };
+
   const navStyle = {
     display: "flex",
     justifyContent: "space-between",
@@ -51,15 +81,9 @@ const Navbar = ({ isLoggedIn }) => {
     cursor: "pointer",
   };
 
-  const loginStyle = {
-    ...buttonStyle,
-    backgroundColor: "#EF4444",
-  };
-
-  const signupStyle = {
-    ...buttonStyle,
-    backgroundColor: "#EF4444",
-  };
+  const loginStyle = { ...buttonStyle, backgroundColor: "#EF4444" };
+  const signupStyle = { ...buttonStyle, backgroundColor: "#EF4444" };
+  const logoutStyle = { ...buttonStyle, backgroundColor: "#DC2626" };
 
   const hoverEffect = (e, styles) => {
     Object.assign(e.target.style, styles);
@@ -105,10 +129,8 @@ const Navbar = ({ isLoggedIn }) => {
         >
           Chats
         </Link>
-
-        {/* New "Ask ChatAI" Link */}
         <a
-          href="https://chatai-1-2enq.onrender.com/"
+          href="https://chatai-1-il4g.onrender.com/"
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
@@ -120,14 +142,26 @@ const Navbar = ({ isLoggedIn }) => {
       </div>
       <div>
         {isLoggedIn ? (
-          <Link
-            to="/profile"
-            style={linkStyle}
-            onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
-            onMouseOut={(e) => hoverEffect(e, linkStyle)}
-          >
-            My Profile
-          </Link>
+          <>
+            <Link
+              to="/profile"
+              style={linkStyle}
+              onMouseOver={(e) => hoverEffect(e, linkHoverStyle)}
+              onMouseOut={(e) => hoverEffect(e, linkStyle)}
+            >
+              My Profile
+            </Link>
+            <button
+              onClick={handleLogout}
+              style={{ ...logoutStyle, padding: "10px 12px", fontSize: "15px" }}
+              onMouseOver={(e) =>
+                hoverEffect(e, { backgroundColor: "#B91C1C" })
+              }
+              onMouseOut={(e) => hoverEffect(e, logoutStyle)}
+            >
+              Logout
+            </button>
+          </>
         ) : (
           <>
             <Link
@@ -153,6 +187,14 @@ const Navbar = ({ isLoggedIn }) => {
           </>
         )}
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
     </nav>
   );
 };
